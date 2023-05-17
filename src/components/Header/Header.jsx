@@ -1,14 +1,27 @@
 import React from "react";
 
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Container, Row } from "reactstrap";
 import { BsCart2 } from "react-icons/bs";
 import { BiUserCircle } from "react-icons/bi";
 import { useSelector } from "react-redux";
+import useAuth from "../../custom-hooks/useAuth";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase.config";
 
 const links = ["home", "cart"];
 const Header = () => {
   const navigate = useNavigate();
+  const { currentUser } = useAuth();
+  const logout = () => {
+    signOut(auth)
+      .then(() => {
+        alert("logged out");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const navigateToCart = () => {
     navigate("/cart");
   };
@@ -41,6 +54,15 @@ const Header = () => {
               <span>
                 <BiUserCircle />
               </span>
+              {currentUser ? (
+                <button>
+                  <Link to="/login" onClick={logout}>
+                    Logout
+                  </Link>
+                </button>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         </Row>

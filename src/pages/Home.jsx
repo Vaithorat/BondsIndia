@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import ProductList from "../components/UI/ProductList";
 import products from "../assets/data/products";
 
 const Home = () => {
-  const [data, setData] = useState(products);
+  const data = products;
 
   return (
     <div className="flex flex-wrap">

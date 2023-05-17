@@ -2,22 +2,25 @@ import React from "react";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../redux/slices/cartSlice";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
+  const titles = ["Images", "Title", "Price", "Quantity", "Delete"];
   return (
-    <div>
+    <div className="flex flex-col">
       {cartItems.length === 0 ? (
         <div>Cart is empty</div>
       ) : (
         <table className="w-full mx-24">
           <thead>
             <tr>
-              <th className="px-4 py-2">Image</th>
-              <th className="px-4 py-2">Title</th>
-              <th className="px-4 py-2">Price</th>
-              <th className="px-4 py-2">Quantity</th>
-              <th className="px-4 py-2">Delete</th>
+              {titles.map((title, index) => (
+                <th className="px-4 py-2" key={index}>
+                  {title}
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -27,6 +30,12 @@ const Cart = () => {
           </tbody>
         </table>
       )}
+      <div className="flex">
+        <h4 className="flex items-end w-full ">Total: {totalAmount}</h4>
+      </div>
+      <button>
+        <Link to="/checkout"> Checkout</Link>
+      </button>
     </div>
   );
 };
