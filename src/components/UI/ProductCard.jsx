@@ -28,7 +28,9 @@ const ProductCard = ({ item }) => {
           <Link to={`/shop/${item.id}`}>{item.productName}</Link>
         </div>
         <h2>{item.price}</h2>
-        <BsCartPlus className="hover:cursor-pointer" onClick={addToCart} />
+        <div>
+          <button onClick={addToCart}>Buy Now</button>
+        </div>
       </div>
     </Col>
   );

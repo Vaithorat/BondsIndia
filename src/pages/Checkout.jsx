@@ -4,30 +4,34 @@ import { useSelector } from "react-redux";
 const Checkout = () => {
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
+  const orderPlaced = (e) => {
+    e.preventDefault();
+    alert("Order Placed");
+  };
   return (
     <div>
       <h1>Checkout</h1>
-      <form className="flex">
-        <div>
+      <form className="flex" onSubmit={orderPlaced}>
+        <div className="flex flex-col">
           <label>
             <h5>Name:</h5>
-            <input type="text"></input>
+            <input type="text" required></input>
           </label>
           <label>
             Address:
-            <input type="text"></input>
+            <input type="text" required></input>
           </label>
           <label>
             Email
-            <input type="email"></input>
+            <input type="email" required></input>
           </label>
           <label>
             Contact No.
-            <input type="tel"></input>
+            <input type="tel" required></input>
           </label>
           <label>
             Address
-            <input type="text"></input>
+            <input type="text" required></input>
           </label>
         </div>
         <div>

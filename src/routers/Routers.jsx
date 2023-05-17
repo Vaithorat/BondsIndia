@@ -28,7 +28,7 @@ const Routers = () => {
           </ProtectedRoute>
         }
       />
-      <Route path="cart" element={<Checkout />} />
+      <Route path="checkout" element={<Checkout />} />
       <Route path="login" element={<Login />} />
       <Route path="signup" element={<Signup />} />
     </Routes>

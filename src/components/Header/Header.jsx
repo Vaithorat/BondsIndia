@@ -44,13 +44,17 @@ const Header = () => {
               </ul>
             </div>
             <div className="flex gap-12 w-20">
-              <div>
-                <BsCart2
-                  onClick={navigateToCart}
-                  className="hover:cursor-pointer"
-                />
-                {totalQuantity}
-              </div>
+              {currentUser ? (
+                <div>
+                  <BsCart2
+                    onClick={navigateToCart}
+                    className="hover:cursor-pointer"
+                  />
+                  {totalQuantity}
+                </div>
+              ) : (
+                <></>
+              )}
               <span>
                 <BiUserCircle />
               </span>
