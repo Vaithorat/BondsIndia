@@ -1,7 +1,5 @@
 import React from "react";
-import { BsCartPlus } from "react-icons/bs";
 import { Col } from "reactstrap";
-import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../redux/slices/cartSlice";
 
@@ -24,10 +22,8 @@ const ProductCard = ({ item }) => {
         <div>
           <img src={item.imgUrl} alt="" />
         </div>
-        <div>
-          <Link to={`/shop/${item.id}`}>{item.productName}</Link>
-        </div>
-        <h2>₹{item.price}</h2>
+        <h4>{item.productName}</h4>
+        <h6>₹{item.price}</h6>
         <div>
           <button onClick={addToCart} className="bg-gray-500 text-white p-2">
             Buy Now

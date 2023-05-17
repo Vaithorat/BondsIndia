@@ -29,9 +29,9 @@ const Signup = () => {
     }
   };
   return (
-    <div className="flex flex-col">
-      <h2>Sign Up</h2>
-      <form onSubmit={signup}>
+    <div className="flex justify-center items-center flex-col">
+      <h2 className="flex">Sign Up</h2>
+      <form onSubmit={signup} className="flex flex-col mx-auto">
         <label>
           Email
           <input

@@ -20,7 +20,7 @@ const Cart = () => {
   return (
     <div className="flex flex-col">
       {cartItems.length === 0 ? (
-        <div>Cart is empty</div>
+        <h1 className="flex justify-center">Cart is empty</h1>
       ) : (
         <table className="w-full mx-24">
           <thead>
@@ -53,11 +53,16 @@ const Cart = () => {
         </table>
       )}
       <div className="flex">
-        <h4 className="flex items-end w-full">Total: ₹{totalAmount}</h4>
+        <h4 className="flex justify-evenly w-full">Total: ₹{totalAmount}</h4>
       </div>
       {!disableCheckout && (
         <button>
-          <Link to="/checkout">Checkout</Link>
+          <Link
+            className="text-white bg-gray-500 p-2 no-underline"
+            to="/checkout"
+          >
+            Checkout
+          </Link>
         </button>
       )}
     </div>

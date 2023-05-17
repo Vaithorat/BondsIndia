@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { Container, Row } from "reactstrap";
 import { BsCart2 } from "react-icons/bs";
 import { BiUserCircle } from "react-icons/bi";
 import { useSelector } from "react-redux";
@@ -27,50 +26,55 @@ const Header = () => {
   };
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   return (
-    <header className="flex ">
-      <Container>
-        <Row>
-          <div className="flex">
+    <header className="flex justify-center items-center mt-12">
+      <div className="flex justify-around w-full items-center">
+        <div>
+          <h1>Bonds India</h1>
+        </div>
+        <div>
+          <ul className="flex justify-evenly gap-12 ">
+            {links.map((item, index) => (
+              <li key={index}>
+                <NavLink
+                  className="text-white bg-gray-500 p-2 no-underline"
+                  to={item}
+                >
+                  {item.toUpperCase()}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="flex gap-12 w-20">
+          {currentUser ? (
             <div>
-              <h1>Bonds India</h1>
+              <BsCart2
+                onClick={navigateToCart}
+                className="hover:cursor-pointer"
+              />
+              {totalQuantity}
             </div>
-            <div>
-              <ul className="flex justify-evenly gap-12">
-                {links.map((item, index) => (
-                  <li key={index}>
-                    <NavLink to={item}>{item.toUpperCase()}</NavLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="flex gap-12 w-20">
-              {currentUser ? (
-                <div>
-                  <BsCart2
-                    onClick={navigateToCart}
-                    className="hover:cursor-pointer"
-                  />
-                  {totalQuantity}
-                </div>
-              ) : (
-                <></>
-              )}
-              <span>
-                <BiUserCircle />
-              </span>
-              {currentUser ? (
-                <button>
-                  <Link to="/login" onClick={logout}>
-                    Logout
-                  </Link>
-                </button>
-              ) : (
-                <></>
-              )}
-            </div>
-          </div>
-        </Row>
-      </Container>
+          ) : (
+            <></>
+          )}
+          <span>
+            <BiUserCircle />
+          </span>
+          {currentUser ? (
+            <button className="text-white bg-gray-500 p-2">
+              <Link
+                to="/login"
+                onClick={logout}
+                className="text-white no-underline"
+              >
+                Logout
+              </Link>
+            </button>
+          ) : (
+            <></>
+          )}
+        </div>
+      </div>
     </header>
   );
 };

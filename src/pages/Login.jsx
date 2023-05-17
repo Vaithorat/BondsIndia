@@ -28,12 +28,13 @@ const Login = () => {
     }
   };
   return (
-    <div className="flex flex-col">
-      <h2>LOGIN</h2>
-      <form onSubmit={signIn}>
+    <div className="flex justify-center items-center flex-col">
+      <h2 className="flex">LOGIN</h2>
+      <form onSubmit={signIn} className="flex flex-col mx-auto">
         <label>
           Email
           <input
+            className="h-6"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
