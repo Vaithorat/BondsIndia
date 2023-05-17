@@ -28,7 +28,7 @@ const Login = () => {
     }
   };
   return (
-    <div>
+    <div className="flex flex-col">
       <h2>LOGIN</h2>
       <form onSubmit={signIn}>
         <label>
@@ -47,7 +47,9 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <button type="submit">Login</button>
+        <button type="submit" className="p-2 bg-gray-400 text-white border-2">
+          Login
+        </button>
         <span>
           <Link to="/signup">Register</Link>
         </span>

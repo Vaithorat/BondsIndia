@@ -27,9 +27,11 @@ const ProductCard = ({ item }) => {
         <div>
           <Link to={`/shop/${item.id}`}>{item.productName}</Link>
         </div>
-        <h2>{item.price}</h2>
+        <h2>₹{item.price}</h2>
         <div>
-          <button onClick={addToCart}>Buy Now</button>
+          <button onClick={addToCart} className="bg-gray-500 text-white p-2">
+            Buy Now
+          </button>
         </div>
       </div>
     </Col>

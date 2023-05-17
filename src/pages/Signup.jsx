@@ -6,6 +6,7 @@ import { auth } from "../firebase.config";
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -28,7 +29,7 @@ const Signup = () => {
     }
   };
   return (
-    <div>
+    <div className="flex flex-col">
       <h2>Sign Up</h2>
       <form onSubmit={signup}>
         <label>
@@ -47,7 +48,9 @@ const Signup = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <button type="submit">Register</button>
+        <button type="submit" className="p-2 bg-gray-400 text-white border-2">
+          Register
+        </button>
         <span>
           <Link to="/login">Login</Link>
         </span>

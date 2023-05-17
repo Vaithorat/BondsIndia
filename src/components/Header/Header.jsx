@@ -5,7 +5,7 @@ import { Container, Row } from "reactstrap";
 import { BsCart2 } from "react-icons/bs";
 import { BiUserCircle } from "react-icons/bi";
 import { useSelector } from "react-redux";
-import useAuth from "../../custom-hooks/useAuth";
+import useAuth from "../../useAuth/useAuth";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase.config";
 

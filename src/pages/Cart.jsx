@@ -8,6 +8,15 @@ const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
   const titles = ["Images", "Title", "Price", "Quantity", "Delete"];
+
+  const disableCheckout = cartItems.length === 0;
+
+  const deleteProduct = (itemId) => {
+    dispatch(cartActions.deleteItem(itemId));
+  };
+
+  const dispatch = useDispatch();
+
   return (
     <div className="flex flex-col">
       {cartItems.length === 0 ? (
@@ -25,41 +34,33 @@ const Cart = () => {
           </thead>
           <tbody>
             {cartItems.map((item, index) => (
-              <Tr item={item} key={index} />
+              <tr key={index}>
+                <td>
+                  <img src={item.imgUrl} alt="" />
+                </td>
+                <td>{item.productName}</td>
+                <td>{item.price}</td>
+                <td>{item.quantity}</td>
+                <td>
+                  <RiDeleteBin6Fill
+                    className="hover:cursor-pointer"
+                    onClick={() => deleteProduct(item.id)}
+                  />
+                </td>
+              </tr>
             ))}
           </tbody>
         </table>
       )}
       <div className="flex">
-        <h4 className="flex items-end w-full ">Total: {totalAmount}</h4>
+        <h4 className="flex items-end w-full">Total: ₹{totalAmount}</h4>
       </div>
-      <button>
-        <Link to="/checkout"> Checkout</Link>
-      </button>
+      {!disableCheckout && (
+        <button>
+          <Link to="/checkout">Checkout</Link>
+        </button>
+      )}
     </div>
-  );
-};
-
-const Tr = ({ item }) => {
-  const dispatch = useDispatch();
-  const deleteProduct = () => {
-    dispatch(cartActions.deleteItem(item.id));
-  };
-  return (
-    <tr>
-      <td>
-        <img src={item.imgUrl} alt=""></img>
-      </td>
-      <td>{item.productName}</td>
-      <td>{item.price}</td>
-      <td>{item.quantity}</td>
-      <td>
-        <RiDeleteBin6Fill
-          className="hover:cursor-pointer"
-          onClick={deleteProduct}
-        />
-      </td>
-    </tr>
   );
 };
 

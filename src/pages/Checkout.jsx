@@ -9,7 +9,7 @@ const Checkout = () => {
     alert("Order Placed");
   };
   return (
-    <div>
+    <div className="flex flex-col">
       <h1>Checkout</h1>
       <form className="flex" onSubmit={orderPlaced}>
         <div className="flex flex-col">
@@ -36,7 +36,7 @@ const Checkout = () => {
         </div>
         <div>
           <h4>Total Quantity: {totalQuantity}</h4>
-          <h4>Total Amount: {totalAmount}</h4>
+          <h4>Total Amount: ₹{totalAmount}</h4>
         </div>
         <button type="submit">Place Order</button>
       </form>
