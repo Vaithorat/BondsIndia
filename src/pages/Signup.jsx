@@ -29,32 +29,51 @@ const Signup = () => {
     }
   };
   return (
-    <div className="flex justify-center items-center flex-col">
-      <h2 className="flex">Sign Up</h2>
-      <form onSubmit={signup} className="flex flex-col mx-auto">
-        <label>
-          Email
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <button type="submit" className="p-2 bg-gray-400 text-white border-2">
-          Register
-        </button>
-        <span>
-          <Link to="/login">Login</Link>
-        </span>
-      </form>
+    <div className="flex flex-col h-screen justify-center items-center">
+      <div
+        className="flex flex-col p-24 rounded-xl items-center"
+        style={{
+          background: "linear-gradient(to bottom, #4F46E5, #8669FF)",
+          transition: "background 0.3s ease",
+        }}
+      >
+        <h1 className="flex py-4 text-white text-3xl">SIGN UP</h1>
+        <form onSubmit={signup} className="flex flex-col w-[50vw] mx-auto">
+          <label>
+            <input
+              className="h-6 w-full p-2 border-none"
+              type="email"
+              value={email}
+              placeholder="Enter your Email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+          <label>
+            <input
+              className="p-2 border-none"
+              type="password"
+              value={password}
+              placeholder="Enter your Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+          <button
+            type="submit"
+            className="p-2 mt-4 rounded-xl bg-gray-400 text-white border-2 transition-colors duration-300 hover:bg-gray-500"
+            style={{
+              background: "linear-gradient(to bottom, #4F46E5, #8669FF)",
+              color: "#d6d4fa",
+            }}
+          >
+            Register
+          </button>
+          <div className="flex justify-end mt-2">
+            <Link to="/login" className="no-underline text-white">
+              Already a User? Login Here
+            </Link>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

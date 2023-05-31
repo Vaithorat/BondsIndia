@@ -29,9 +29,6 @@ const Header = () => {
     <header className="flex justify-center items-center mt-12">
       <div className="flex justify-around w-full items-center">
         <div>
-          <h1>Bonds India</h1>
-        </div>
-        <div>
           <ul className="flex justify-evenly gap-12 ">
             {links.map((item, index) => (
               <li key={index}>

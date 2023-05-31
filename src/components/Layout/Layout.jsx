@@ -1,16 +1,15 @@
 import React from "react";
 import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
 import Routers from "../../routers/Routers";
 
 const Layout = () => {
+  const hideHeader = window.location.pathname === "/login";
   return (
     <div>
-      <Header />
+      {!hideHeader && <Header />}
       <div>
         <Routers />
       </div>
-      <Footer />
     </div>
   );
 };
