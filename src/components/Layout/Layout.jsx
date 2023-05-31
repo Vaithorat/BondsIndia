@@ -5,7 +5,8 @@ import Routers from "../../routers/Routers";
 
 const Layout = () => {
   const location = useLocation();
-  const hideHeader = location.pathname === "/login";
+  const hideHeader =
+    location.pathname === "/login" || location.pathname === "/signup";
 
   return (
     <div>
