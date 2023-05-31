@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsCart2 } from "react-icons/bs";
 import { BiUserCircle } from "react-icons/bi";
 import { useSelector } from "react-redux";
