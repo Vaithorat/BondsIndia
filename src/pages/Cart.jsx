@@ -53,12 +53,14 @@ const Cart = () => {
         </table>
       )}
       <div className="flex">
-        <h4 className="flex justify-evenly w-full">Total: ₹{totalAmount}</h4>
+        <h4 className="flex justify-evenly w-full mb-12">
+          Total: ₹{totalAmount}
+        </h4>
       </div>
       {!disableCheckout && (
         <button>
           <Link
-            className="text-white bg-gray-500 p-2 no-underline"
+            className="bg-orange-800 mt-8 text-white p-4 rounded-xl hover:bg-orange-900 transition-colors duration-300 no-underline "
             to="/checkout"
           >
             Checkout

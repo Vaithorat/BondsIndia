@@ -14,18 +14,21 @@ const ProductCard = ({ item }) => {
         imgUrl: item.imgUrl,
       })
     );
-    alert("Product Added to Cart");
+    // alert("Product Added to Cart");
   };
   return (
     <Col lg="3">
       <div>
         <div>
-          <img src={item.imgUrl} alt="" />
+          <img src={item.imgUrl} alt="product" />
         </div>
         <h4>{item.productName}</h4>
         <h6>₹{item.price}</h6>
         <div>
-          <button onClick={addToCart} className="bg-gray-500 text-white p-2">
+          <button
+            onClick={addToCart}
+            className="bg-orange-800 text-white p-2 rounded-xl hover:bg-orange-900 transition-colors duration-300"
+          >
             Buy Now
           </button>
         </div>

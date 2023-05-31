@@ -1,5 +1,4 @@
-import React from "react";
-
+import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { BsCart2 } from "react-icons/bs";
 import { BiUserCircle } from "react-icons/bi";
@@ -8,8 +7,8 @@ import useAuth from "../../useAuth/useAuth";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase.config";
 
-const links = ["home", "cart"];
 const Header = () => {
+  const [logoutButton, setLogoutButton] = useState(false);
   const navigate = useNavigate();
   const { currentUser } = useAuth();
   const logout = () => {
@@ -21,44 +20,40 @@ const Header = () => {
         console.log(err);
       });
   };
+
   const navigateToCart = () => {
     navigate("/cart");
   };
+
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+
   return (
-    <header className="flex justify-center items-center mt-12">
-      <div className="flex justify-around w-full items-center">
-        <div>
-          <ul className="flex justify-evenly gap-12 ">
-            {links.map((item, index) => (
-              <li key={index}>
-                <NavLink
-                  className="text-white bg-gray-500 p-2 no-underline"
-                  to={item}
-                >
-                  {item.toUpperCase()}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="flex gap-12 w-20">
-          {currentUser ? (
-            <div>
+    <div className="flex justify-center items-center mt-12">
+      <div className="flex justify-around w-full">
+        <div className="flex gap-12 w-full mr-16 justify-end items-center">
+          {currentUser && (
+            <div className="flex items-start text-xl">
               <BsCart2
                 onClick={navigateToCart}
-                className="hover:cursor-pointer"
+                className="hover:cursor-pointer w-8 h-8"
               />
-              {totalQuantity}
+              <div className="bg-red-500 rounded-xl text-white w-6 h-6 flex justify-center items-center">
+                {totalQuantity}
+              </div>
             </div>
-          ) : (
-            <></>
           )}
           <span>
-            <BiUserCircle />
+            <BiUserCircle
+              className="w-8 h-8 hover:cursor-pointer"
+              onClick={() => setLogoutButton(!logoutButton)}
+            />
           </span>
-          {currentUser ? (
-            <button className="text-white bg-gray-500 p-2">
+          {currentUser && (
+            <button
+              className={`text-white bg-gray-500 p-2 rounded-xl transition-opacity ${
+                logoutButton ? "opacity-100" : "opacity-0"
+              }`}
+            >
               <Link
                 to="/login"
                 onClick={logout}
@@ -67,12 +62,10 @@ const Header = () => {
                 Logout
               </Link>
             </button>
-          ) : (
-            <></>
           )}
         </div>
       </div>
-    </header>
+    </div>
   );
 };
 
